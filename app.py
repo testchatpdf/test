@@ -1,16 +1,13 @@
 import streamlit as st
 import requests
-from dotenv import load_dotenv
-import os
 
-# Tải biến môi trường từ file .env
-load_dotenv()
-API_KEY = os.getenv("CHATPDF_API_KEY")
+# Sử dụng API Key trực tiếp (thay bằng API Key thực tế của bạn)
+API_KEY = "sec_9Z9B3PU67Id21XLmCCfQ4G4sTpm49iPN"
 SOURCE_IDS = ["src_IAt3Zah3IeHjCiOrqFa4j"]  # Sử dụng sourceId bạn cung cấp
 
 def ask_question(source_id, question):
     if not API_KEY:
-        return "Lỗi: API Key không được tìm thấy. Vui lòng kiểm tra file .env."
+        return "Lỗi: API Key không được tìm thấy."
     url = "https://api.chatpdf.com/v1/chats/message"
     headers = {
         "x-api-key": API_KEY,
