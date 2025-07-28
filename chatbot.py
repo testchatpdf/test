@@ -1,30 +1,15 @@
 import requests
-import json
+import os
+from dotenv import load_dotenv
 
-# Thay bằng API Key của bạn
-API_KEY = "sec_9Z9B3PU67Id21XLmCCfQ4G4sTpm49iPN"
+# Tải biến môi trường từ file .env
+load_dotenv()
+API_KEY = os.getenv("CHATPDF_API_KEY")
 
-
-# Hàm tải lên PDF và nhận sourceId
-def upload_pdf(file_path):
-    url = "https://api.chatpdf.com/v1/sources/add-file"
-    headers = {
-        "x-api-key": API_KEY,
-        "Content-Type": "multipart/form-data"
-    }
-
-    with open(file_path, "rb") as file:
-        files = {"file": file}
-        response = requests.post(url, headers=headers, files=files)
-
-    if response.status_code == 200:
-        return response.json()["sourceId"]
-    else:
-        raise Exception(f"Error uploading PDF: {response.text}")
-
-
-# Hàm gửi câu hỏi tới ChatPDF
+# Hàm gửi câu hỏi tới ChatPDF với sourceId cố định
 def ask_question(source_id, question):
+    if not API_KEY:
+        raise Exception("API Key không được tìm thấy. Vui lòng kiểm tra file .env.")
     url = "https://api.chatpdf.com/v1/chats/message"
     headers = {
         "x-api-key": API_KEY,
@@ -32,28 +17,21 @@ def ask_question(source_id, question):
     }
     data = {
         "sourceId": source_id,
-        "messages": [
-            {"role": "user", "content": question}
-        ]
+        "messages": [{"role": "user", "content": question}]
     }
-
     response = requests.post(url, headers=headers, json=data)
-
     if response.status_code == 200:
         return response.json()["content"]
     else:
-        raise Exception(f"Error asking question: {response.text}")
-
+        raise Exception(f"Error asking question: {response.status_code} - {response.text}")
 
 # Hàm chính để chạy chatbot
 def main():
-    # Đường dẫn tới file PDF
-    pdf_path = "path/to/your/pdf/file.pdf"  # Thay bằng đường dẫn tới file PDF của bạn
+    # Sử dụng sourceId cố định đã có
+    source_id = "src_IAt3Zah3IeHjCiOrqFa4j"
 
     try:
-        # Tải lên PDF
-        source_id = upload_pdf(pdf_path)
-        print(f"PDF uploaded successfully. Source ID: {source_id}")
+        print(f"Using existing Source ID: {source_id}")
 
         # Vòng lặp để nhập câu hỏi
         while True:
@@ -64,8 +42,7 @@ def main():
             print(f"Trả lời: {answer}")
 
     except Exception as e:
-        print(f"Đã xảy ra lỗi: {e}")
-
+        print(f"Đã xảy ra lỗi: {str(e)}")
 
 if __name__ == "__main__":
     main()

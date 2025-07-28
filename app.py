@@ -1,12 +1,16 @@
 import streamlit as st
 import requests
+from dotenv import load_dotenv
+import os
 
-# Thay bằng API Key của bạn
-API_KEY = "sec_9Z9B3PU67Id21XLmCCfQ4G4sTpm49iPN"
-# Sử dụng sourceId bạn cung cấp
-SOURCE_IDS = ["CT73v2j5ywDHUtzNKMtyM"]  # Chỉ cần sourceId này, thêm thêm nếu có nhiều PDF
+# Tải biến môi trường từ file .env
+load_dotenv()
+API_KEY = os.getenv("CHATPDF_API_KEY")
+SOURCE_IDS = ["src_IAt3Zah3IeHjCiOrqFa4j"]  # Sử dụng sourceId bạn cung cấp
 
 def ask_question(source_id, question):
+    if not API_KEY:
+        return "Lỗi: API Key không được tìm thấy. Vui lòng kiểm tra file .env."
     url = "https://api.chatpdf.com/v1/chats/message"
     headers = {
         "x-api-key": API_KEY,
@@ -20,16 +24,18 @@ def ask_question(source_id, question):
     if response.status_code == 200:
         return response.json()["content"]
     else:
-        return f"Error: {response.text}"
+        return f"Lỗi: {response.status_code} - {response.text}"
 
 # Giao diện Streamlit
 st.title("ChatPDF Chatbot")
 
-# Vì chỉ có một sourceId, không cần chọn
 selected_source = SOURCE_IDS[0]
 
 question = st.text_input("Hỏi về nội dung PDF:")
 if question:
     with st.spinner("Đang xử lý..."):
         answer = ask_question(selected_source, question)
-    st.write(f"Trả lời: {answer}")
+    if answer:
+        st.write(f"Trả lời: {answer}")
+    else:
+        st.error("Không thể xử lý yêu cầu. Vui lòng kiểm tra lại.")
