@@ -25,7 +25,7 @@ def ask_question(source_id, question):
 # Hàm chính để chạy chatbot
 def main():
     # Đã cập nhật sourceId cố định
-    source_id = "kCxIBhNS704OCyNqKIzio" #
+    source_id = "cha_kCxIBhNS704OCyNqKIzio" #
 
     try:
         print(f"Using existing Source ID: {source_id}")
