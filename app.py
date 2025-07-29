@@ -3,7 +3,7 @@ import requests
 
 # Sử dụng API Key trực tiếp (thay bằng API Key thực tế của bạn)
 API_KEY = "sec_Cc2RpBY3WeEbjtRbBTrlomxufxHq5nfz"
-SOURCE_IDS = ["Pcq4jIInWrPLK6VVy4BEk"]  # Sử dụng sourceId bạn cung cấp
+SOURCE_IDS = ["MQrphdpKv99AaOzRZypro"]  # Sử dụng sourceId bạn cung cấp
 
 def ask_question(source_id, question):
     if not API_KEY:
