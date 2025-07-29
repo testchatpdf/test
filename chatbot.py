@@ -6,8 +6,7 @@ API_KEY = "sec_9Z9B3PU67Id21XLmCCfQ4G4sTpm49iPN"
 # Hàm gửi câu hỏi tới ChatPDF với sourceId cố định
 def ask_question(source_id, question):
     if not API_KEY:
-        raise Exception("A"
-                        "PI Key không được tìm thấy.")
+        raise Exception("API Key không được tìm thấy.")
     url = "https://api.chatpdf.com/v1/chats/message"
     headers = {
         "x-api-key": API_KEY,
@@ -25,8 +24,8 @@ def ask_question(source_id, question):
 
 # Hàm chính để chạy chatbot
 def main():
-    # Sử dụng sourceId cố định đã có
-    source_id = "src_IAt3Zah3IeHjCiOrqFa4j"
+    # Đã cập nhật sourceId cố định
+    source_id = "kCxIBhNS704OCyNqKIzio" #
 
     try:
         print(f"Using existing Source ID: {source_id}")
@@ -43,3 +42,4 @@ def main():
         print(f"Đã xảy ra lỗi: {str(e)}")
 
 if __name__ == "__main__":
+    main() # Thêm dòng này để gọi hàm main khi script được chạy

@@ -2,7 +2,8 @@ import streamlit as st
 import requests
 
 API_KEY = "sec_Cc2RpBY3WeEbjtRbBTrlomxufxHq5nfz"
-SOURCE_IDS = ["MQrphdpKv99AaOzRZypro"]
+# Đã cập nhật SOURCE_IDS với sourceId mới của bạn
+SOURCE_IDS = ["kCxIBhNS704OCyNqKIzio"] #
 
 def ask_question(source_id, question):
     if not API_KEY:
@@ -20,6 +21,7 @@ def ask_question(source_id, question):
 
 st.title("ChatPDF Chatbot")
 
+# Sử dụng sourceId đầu tiên trong danh sách SOURCE_IDS
 selected_source = SOURCE_IDS[0]
 
 question = st.text_input("Hỏi về nội dung PDF:")
