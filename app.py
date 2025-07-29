@@ -90,7 +90,7 @@ if question and question.strip():
                 st.subheader("Hình ảnh liên quan từ thư mục cục bộ:")
                 for img_path in local_image_paths:
                     # Streamlit có thể hiển thị hình ảnh từ đường dẫn file cục bộ
-                    st.image(img_path, caption=os.path.basename(img_path), use_column_width=True)
+                    st.image(img_path, caption=os.path.basename(img_path), container_width=800)
             else:
                 st.info("Không tìm thấy hình ảnh liên quan trong thư mục cục bộ.")
         else:
