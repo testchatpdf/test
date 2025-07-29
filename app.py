@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 
 # Sử dụng API Key trực tiếp (thay bằng API Key thực tế của bạn)
-API_KEY = "sec_9Z9B3PU67Id21XLmCCfQ4G4sTpm49iPN"
-SOURCE_IDS = ["src_IAt3Zah3IeHjCiOrqFa4j"]  # Sử dụng sourceId bạn cung cấp
+API_KEY = "sec_Cc2RpBY3WeEbjtRbBTrlomxufxHq5nfz"
+SOURCE_IDS = ["2AY6ORzVBCxfWsxyXFRix"]  # Sử dụng sourceId bạn cung cấp
 
 def ask_question(source_id, question):
     if not API_KEY:
