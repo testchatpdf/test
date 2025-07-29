@@ -3,7 +3,7 @@ import requests
 
 API_KEY = "sec_Cc2RpBY3WeEbjtRbBTrlomxufxHq5nfz"
 # Đã cập nhật SOURCE_IDS với sourceId mới của bạn
-SOURCE_IDS = ["kCxIBhNS704OCyNqKIzio"] #
+SOURCE_IDS = ["cha_kCxIBhNS704OCyNqKIzio"] #
 
 def ask_question(source_id, question):
     if not API_KEY:
