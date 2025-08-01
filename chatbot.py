@@ -6,7 +6,7 @@ API_KEY = "sec_Cc2RpBY3WeEbjtRbBTrlomxufxHq5nfz"
 # Hàm gửi câu hỏi tới ChatPDF với sourceId cố định
 def ask_question(source_id, question):
     if not API_KEY:
-        raise Exception("API Key không được tìm thấy.")
+        raise Exception("Agit remote -vPI Key không được tìm thấy.")
     url = "https://api.chatpdf.com/v1/chats/message"
     headers = {
         "x-api-key": API_KEY,
