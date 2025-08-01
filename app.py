@@ -3,7 +3,7 @@ import requests
 import os # Import module os để làm việc với đường dẫn file
 
 API_KEY = "sec_Cc2RpBY3WeEbjtRbBTrlomxufxHq5nfz" # Giữ nguyên API Key của bạn cho ChatPDF
-SOURCE_IDS = ["cha_kCxIBhNS704OCyNqKIzio"] # Giữ nguyên Source ID của bạn
+SOURCE_IDS = ["cha_34WQKyw6jr8SIIqT6xuEX"] # Giữ nguyên Source ID của bạn
 
 # Hàm gửi câu hỏi tới ChatPDF
 def ask_question(source_id, question):
