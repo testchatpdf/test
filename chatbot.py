@@ -2,7 +2,7 @@ import requests
 
 # Sử dụng API Key trực tiếp (thay bằng API Key thực tế của bạn)
 API_KEY = "sec_Cc2RpBY3WeEbjtRbBTrlomxufxHq5nfz"
-
+j
 # Hàm gửi câu hỏi tới ChatPDF với sourceId cố định
 def ask_question(source_id, question):
     if not API_KEY:
